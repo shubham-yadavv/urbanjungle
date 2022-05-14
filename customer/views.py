@@ -9,12 +9,12 @@ from django.conf import settings
 
 class Index(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'customer/index.html')
+        return render(request, 'customer/index2.html')
 
 
 class About(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'customer/about.html')
+        return render(request, 'customer/about2.html')
 
 
 class Order(View):
@@ -136,7 +136,7 @@ class Menu(View):
             'menu_items': menu_items
         }
 
-        return render(request, 'customer/menu.html', context)
+        return render(request, 'customer/menu2.html', context)
 
 
 class MenuSearch(View):
@@ -155,39 +155,5 @@ class MenuSearch(View):
 
         return render(request, 'customer/menu.html', context)
 
-class Route(View):
-    def get(self, request, *args, **kwargs):
-        context = {
-            "google_api_key" : settings.GOOGLE_API_KEY,
-        }
-        return render(request, 'customer/route.html', context)
 
 
-
-class Map(View):
-    def get(self, request, *args, **kwargs):
-        lat_a = request.GET.get('lat_a')
-        lng_a = request.GET.get('lng_a')
-        lat_b = request.GET.get('lat_b')
-        lng_b = request.GET.get('lng_b')
-
-        if lat_a and lng_a and lat_b and lng_b:
-            context = {
-                'lat_a': lat_a,
-                'lng_a': lng_a,
-                'lat_b': lat_b,
-                'lng_b': lng_b
-            }
-        else:
-            context = {
-                "google_api_key" : settings.GOOGLE_API_KEY,
-                "lat_a": "40.730610",
-                "lng_a": "-73.935242",
-                "lat_b": "40.730610",
-                "lng_b": "-73.935242"
-
-            }
-
-
-        
-        return render(request, 'customer/map.html')
