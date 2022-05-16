@@ -9,24 +9,24 @@ from django.conf import settings
 
 class Index(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'customer/index2.html')
+        return render(request, 'customer/index.html')
 
 
 class About(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'customer/about2.html')
+        return render(request, 'customer/about.html')
 
 
 class Order(View):
     def get(self, request, *args, **kwargs):
-        # get every item from each category
+
         appetizers = MenuItem.objects.filter(
             category__name__contains='Appetizer')
         entres = MenuItem.objects.filter(category__name__contains='Entre')
         desserts = MenuItem.objects.filter(category__name__contains='Dessert')
         drinks = MenuItem.objects.filter(category__name__contains='Drink')
 
-        # pass into context
+
         context = {
             'appetizers': appetizers,
             'entres': entres,
@@ -34,7 +34,7 @@ class Order(View):
             'drinks': drinks,
         }
 
-        # render the template
+
         return render(request, 'customer/order.html', context)
 
     def post(self, request, *args, **kwargs):
@@ -79,7 +79,7 @@ class Order(View):
         )
         order.items.add(*item_ids)
 
-        # After everything is done, send confirmation email to the user
+
         body = ('Thank you for your order! Your food is being made and will be delivered soon!\n'
                 f'Your total: {price}\n'
                 'Thank you again for your order!')
@@ -136,7 +136,7 @@ class Menu(View):
             'menu_items': menu_items
         }
 
-        return render(request, 'customer/menu2.html', context)
+        return render(request, 'customer/menu.html', context)
 
 
 class MenuSearch(View):
@@ -154,6 +154,5 @@ class MenuSearch(View):
         }
 
         return render(request, 'customer/menu.html', context)
-
 
 
