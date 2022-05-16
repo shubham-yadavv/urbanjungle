@@ -156,3 +156,9 @@ class MenuSearch(View):
         return render(request, 'customer/menu.html', context)
 
 
+class Route(View):
+    def get(self, request, *args, **kwargs):
+        context = {
+            "google_api_key": settings.GOOGLE_API_KEY,
+            "base_counrty": settings.BASE_COUNTRY}
+        return render(request, 'customer/route.html', context)
