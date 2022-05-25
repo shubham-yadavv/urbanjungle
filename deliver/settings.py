@@ -6,7 +6,7 @@ SECRET_KEY = '(b%y6my(@zizf(agz!*6j+picf^!%tfikl#8hk3@+=e!s4a8bo'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','urbanjungle-app.herokuapp.com']
 
 
 AUTHENTICATION_BACKENDS = [
