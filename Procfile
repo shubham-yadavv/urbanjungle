@@ -1,1 +1,1 @@
-web: gunicorn ask.wsgi
+web: gunicorn deliver.wsgi
